@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:padding="10dp"
+	android:orientation="vertical">
+
+	<LinearLayout
+		style="@style/linearlayout_base"
+		android:orientation="vertical"
+		android:padding="5dp">
+		<EditText
+			style="@style/textview_path"
+			android:id="@+id/input_path"
+			android:hint="贴图路径(.png) | 贴图文件夹路径"/>
+		<EditText
+			style="@style/textview_path"
+			android:id="@+id/output_path"
+			android:hint="输出文件夹路径"/>	
+		<EditText
+			style="@style/textview_path"
+			android:id="@+id/pixel_per_cm"
+			android:inputType="number"
+			android:hint="输出模型尺寸(像素/厘米)(默认16)"/>
+		
+		<Space
+			android:layout_width="40dp"
+			android:layout_height="40dp"/>
+		
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:text="有疑问:\nQQ:2998127301\n交流群:949323734\ngithub:https://github.com/yzf12346/MC-item-Model-maker\n\n版权所有，侵权必究"/>
+	</LinearLayout>
+	<Space
+		android:layout_width="30dp"
+		android:layout_height="30dp"/>
+	<Button
+		style="@style/button_export"
+		android:text="导出"
+		android:id="@+id/export_button"
+		android:onClick="export"/>
+	
+</LinearLayout>

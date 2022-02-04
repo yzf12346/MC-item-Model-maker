@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar"></style>
+	<style name="button_export">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">50dp</item>
+		<item name="android:background">#6644ff</item>
+		<item name="android:textColor">#ffffff</item>
+	</style>
+	
+	<style name="button_selectFile">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">7</item>
+	</style>
+	<style name="textview_path">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">3</item>
+	</style>
+	
+	<style name="linearlayout_base">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">#eeeeee</item>
+	</style>
+	
+	
+</resources>
