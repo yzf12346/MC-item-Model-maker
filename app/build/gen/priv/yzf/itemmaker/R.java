@@ -20,8 +20,9 @@ public final class R {
         public static final int new_file=0x7f020001;
     }
     public static final class id {
-        public static final int export_button=0x7f070003;
+        public static final int export_button=0x7f070004;
         public static final int input_path=0x7f070000;
+        public static final int new_system=0x7f070003;
         public static final int output_path=0x7f070001;
         public static final int pixel_per_cm=0x7f070002;
     }

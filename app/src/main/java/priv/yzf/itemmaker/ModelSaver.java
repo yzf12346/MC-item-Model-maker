@@ -12,13 +12,13 @@ import android.graphics.BitmapFactory;
 import java.util.StringTokenizer;
 import android.util.Log;
 public class ModelSaver {
-	public static boolean saveModel(String bitmapPath,String outputpath,Options opts){
+	public static boolean defaultSaveModel(String bitmapPath,String outputpath,Options opts){
 		File bitmapFile = new File(bitmapPath);
 		if (!bitmapFile.exists()){
 			return false;
 		}
 		if (bitmapFile.isFile()){
-			save(bitmapFile.toString(),outputpath,opts);
+			defaultSave(bitmapFile.toString(),outputpath,opts);
 		}
 		if (bitmapFile.isDirectory()){
 			for (File child : bitmapFile.listFiles()){
@@ -30,17 +30,17 @@ public class ModelSaver {
 				}
 				Log.i("MODEL",child.toString());
 		
-				save(child.toString(),outputpath,opts);
+				defaultSave(child.toString(),outputpath,opts);
 			}
 		}
 		return true;
 	}
-	public static void saveModelSync(final String inputpath,final String outputpath,final Options opts,final Runnable onFinish,final Runnable onError){
+	public static void defaultSaveModelSync(final String inputpath,final String outputpath,final Options opts,final Runnable onFinish,final Runnable onError){
 		new Thread(new Runnable(){
 
 				@Override
 				public void run() {
-					boolean isfinish = saveModel(inputpath,outputpath,opts);
+					boolean isfinish = defaultSaveModel(inputpath,outputpath,opts);
 					if (isfinish){
 					    onFinish.run();
 					}else{
@@ -50,7 +50,7 @@ public class ModelSaver {
 				
 		}).start();
 	}
-    public static void save(String bitmapPath,String outputPath,Options opts){
+    public static void defaultSave(String bitmapPath,String outputPath,Options opts){
 		
 		float[][][] faces ={
 			{// top
@@ -163,12 +163,16 @@ public class ModelSaver {
 		} catch (Exception e) {e.printStackTrace();}
 		
 	}
+	
 	public static void saveBitmap(Bitmap map,String path){
 		try{
 			FileOutputStream output = new FileOutputStream(path);
 			map.compress(Bitmap.CompressFormat.PNG,80,output);
 		}catch(Exception e){e.printStackTrace();}
 	}
+	
+	
+	
 	public static Bitmap getScaledBitmap(Bitmap bitmap){
 		int GOBAL_SCALE = 1024;
 		float unitX = GOBAL_SCALE/bitmap.getWidth();

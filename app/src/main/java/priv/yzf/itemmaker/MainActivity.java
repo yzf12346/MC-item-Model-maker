@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.Switch;
 
 
 public class MainActivity extends Activity { 
@@ -25,6 +26,7 @@ public class MainActivity extends Activity {
 	EditText output;
 	EditText outputsize;
     Button exportButton;
+	Switch usenewSys;
 	ModelSaver.Options options;
 
 	MainActivity activity;
@@ -35,14 +37,15 @@ public class MainActivity extends Activity {
 
 		activity = this;
 
-		inputPath = "";
-		outputPath = "";
+		inputPath = "/storage/emulated/0/input/cookie.png";
+		outputPath = "/sdcard/export/";
 		options = new ModelSaver.Options();
 
 		input = findViewById(R.id.input_path);
 		output = findViewById(R.id.output_path);
 		outputsize = findViewById(R.id.pixel_per_cm);
-
+		usenewSys = findViewById(R.id.new_system);
+       // FixedModelSaver.saveModelSync(inputPath, outputPath, options, new OnFinish(), new OnERROR());
     }
 
 	public void export(View view) {
@@ -64,17 +67,20 @@ public class MainActivity extends Activity {
 						return;
 					}
 					if (outputPath.equals("")) {
-						Toast.makeText(activity, "输出路径 不能为空", Toast.LENGTH_LONG).show();
-						return;
+						//Toast.makeText(activity, "输出路径 不能为空", Toast.LENGTH_LONG).show();
+						outputPath = "/sdcard/export/";
 					}
-					if (outputsize.equals("")) {
+					if (sizeStr.equals("")) {
 						sizeStr = "16.0";
 					}
 
 					float size = Float.parseFloat(sizeStr);
 					options.pixelsPerCM = size;
-					ModelSaver.saveModelSync(inputPath, outputPath, options, new OnFinish(), new OnERROR());
-					
+					if(usenewSys.isChecked()){
+					    FixedModelSaver.saveModelSync(inputPath, outputPath, options, new OnFinish(), new OnERROR());
+					}else{
+						ModelSaver.defaultSaveModelSync(inputPath,outputPath,options,new OnFinish(),new OnERROR());
+					}
 				}
 			});
 	}
