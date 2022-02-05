@@ -1,20 +1,14 @@
 package priv.yzf.itemmaker;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.view.ActionMode.Callback;
-import java.util.concurrent.RunnableFuture;
-import android.app.AlertDialog;
-import android.os.Message;
 import android.view.View;
-import android.widget.Toast;
-import android.widget.EditText;
 import android.widget.Button;
-import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity { 
@@ -109,5 +103,12 @@ public class MainActivity extends Activity {
 					}
 				});
 		}
+	}
+	public void jumptoGithub(View view){
+		Intent intent= new Intent();        
+		intent.setAction("android.intent.action.VIEW");    
+		Uri content_url = Uri.parse("https://github.com/yzf12346/MC-item-Model-maker");   
+		intent.setData(content_url);  
+		startActivity(intent);
 	}
 } 

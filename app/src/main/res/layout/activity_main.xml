@@ -45,8 +45,14 @@
 		
 		<TextView
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:text="有疑问:\nQQ:2998127301\n交流群:949323734\ngithub:https://github.com/yzf12346/MC-item-Model-maker\n\n版权所有，侵权必究"/>
+			android:layout_height="wrap_content"
+			android:text="有疑问:\nQQ:2998127301\n交流群:949323734\n\n"/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="github:https://github.com/yzf12346/MC-item-Model-maker"
+			android:onClick="jumptoGithub"
+			android:textColor="#5544ff"/>
 	</LinearLayout>
 	<Space
 		android:layout_width="30dp"

@@ -1,6 +1,9 @@
 # view AndroidManifest.xml #generated:25
 -keep class priv.yzf.itemmaker.MainActivity { <init>(...); }
 
-# onClick res/layout/activity_main.xml #generated:54
+# onClick res/layout/activity_main.xml #generated:60
 -keepclassmembers class * { *** export(...); }
+
+# onClick res/layout/activity_main.xml #generated:50
+-keepclassmembers class * { *** jumptoGithub(...); }
 
