@@ -9,10 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.graphics.Color;
 
 
 public class MainActivity extends Activity { 
-
+    public boolean saveAble = true;
     String inputPath;
 	String outputPath;
 
@@ -34,7 +35,7 @@ public class MainActivity extends Activity {
 		inputPath = "/storage/emulated/0/input/cookie.png";
 		outputPath = "/sdcard/export/";
 		options = new ModelSaver.Options();
-
+        exportButton = findViewById(R.id.export_button);
 		input = findViewById(R.id.input_path);
 		output = findViewById(R.id.output_path);
 		outputsize = findViewById(R.id.pixel_per_cm);
@@ -47,7 +48,13 @@ public class MainActivity extends Activity {
 
 				@Override
 				public void run() {
-
+					if (saveAble == false){
+						return;
+					}
+                    saveAble = false;
+					exportButton.setBackgroundColor(Color.parseColor("#666666"));
+					exportButton.setText("导出中...");
+					
                     //Toast.makeText(activity,"tost",Toast.LENGTH_LONG).show();
 					inputPath = input.getText().toString();
 					outputPath = output.getText().toString();
@@ -87,6 +94,9 @@ public class MainActivity extends Activity {
 					@Override
 					public void run() {
 						Toast.makeText(activity, "导出完成\n路径：" + outputPath, Toast.LENGTH_SHORT).show();
+						saveAble = true;
+						exportButton.setBackgroundColor(Color.parseColor("#6644ff"));
+						exportButton.setText("导出");
 					}
 				});
 		}
@@ -100,6 +110,9 @@ public class MainActivity extends Activity {
 					@Override
 					public void run() {
 						Toast.makeText(activity, "错误:\n输入路径或输出路径为空", Toast.LENGTH_SHORT).show();
+						saveAble = true;
+						exportButton.setBackgroundColor(Color.parseColor("#6644ff"));
+						exportButton.setText("导出");
 					}
 				});
 		}

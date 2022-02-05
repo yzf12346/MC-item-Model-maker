@@ -94,7 +94,10 @@ public class ModelSaver {
 		Bitmap bitmap = BitmapFactory.decodeFile(bitmapPath);
 		
 		String bitmapName = new File(bitmapPath).getName().replace(".png","");
-		
+		File outFile = new File(outputPath);
+		if (!outFile.isDirectory()){
+			outFile.mkdirs();
+		}
 		try {
 			PrintStream stream =new PrintStream(Paths.get(outputPath,bitmapName+"_out.obj").toString());
 
@@ -128,11 +131,11 @@ public class ModelSaver {
 					Uy =1-Uy;
 					Vy = 1-Vy;
 					
-					Ux += paddingx;
+					/*Ux += paddingx;
 					Uy -= paddingy;
 					Vx -= paddingx;
 					Vy += paddingy;
-					
+					*/
 					for (float[][] arrss: faces) {
 						int addCount = arrss.length;
 						for (float[] values : arrss) {
@@ -143,10 +146,10 @@ public class ModelSaver {
 							stream.printf("vn 0 1 0\n");
 						}
 						stream.printf("vt %f %f\n", Ux, Uy);
-						stream.printf("vt %f %f\n", Vx, Uy);
-						stream.printf("vt %f %f\n", Vx, Vy);
 						stream.printf("vt %f %f\n", Ux, Vy);
-
+						stream.printf("vt %f %f\n", Vx, Vy);
+						stream.printf("vt %f %f\n", Vx, Uy);
+						
 						stream.printf("f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d \n",
 									  vCount, vCount, vCount,
 									  vCount + 1, vCount + 1, vCount + 1,
